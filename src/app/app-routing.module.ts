@@ -1,3 +1,4 @@
+import { FacebookGuard } from './guards/facebook.guard';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -6,16 +7,18 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path:'/home',
-    loadChildren: () => import('./components/home/home.module').then(m => m.HomeModule)
+    path:'',
+    component:HomeComponent,
+    loadChildren: () => import('./components/home/home.module').then(m => m.HomeModule),
+    canActivate:[FacebookGuard]
   },
   {
     path:'login',
-  },
-  {
+    component:LoginComponent
+  },{
     path:'register',
     component:RegisterComponent
-  },
+  }
 ];
 
 @NgModule({
