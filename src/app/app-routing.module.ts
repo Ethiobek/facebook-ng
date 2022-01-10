@@ -6,15 +6,14 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path:'/',
-    component:HomeComponent
+    path:'/home',
+    loadChildren: () => import('./components/home/home.module').then(m => m.HomeModule)
   },
   {
-    path:'/login',
-    component:LoginComponent
+    path:'login',
   },
   {
-    path:'/register',
+    path:'register',
     component:RegisterComponent
   },
 ];
